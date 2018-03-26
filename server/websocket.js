@@ -13,6 +13,7 @@ module.exports = function(app, conn) {
 				conn.query(sql,(err,rs)=>{
 					if(err) console.log(err.message);
 					else{
+						console.log(io.sockets)
 						io.sockets.sockets[rs[0].socketid].emit("receiveMsg", {msg:data.msg});
 					}
 				})
